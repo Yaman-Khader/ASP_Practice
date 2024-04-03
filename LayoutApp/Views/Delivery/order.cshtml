@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Order";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<h1>Order Request</h1>
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>@Html.Label("Order Id")</td>
+            <td>@Html.TextBox("OrderId") 
+        </tr>
+        <tr>
+            <td>@Html.Label("Order Key")</td>
+            <td>@Html.TextBox("OrderKey")
+        </tr>
+        <tr>
+            <td>@Html.Label("Phone Number")</td>
+            <td>@Html.TextBox("PhoneNumber") 
+        </tr>
+        <tr>
+            <td>@Html.Label("Email Address")</td>
+            <td>@Html.TextBox("EmailAddress") 
+        </tr>
+        <tr>
+            <td>Delivery Payment:</td>
+            <td>
+                @Html.RadioButton("DeliveryPayment", "Cash", true) Cash Money
+                @Html.RadioButton("DeliveryPayment", "Card") Credit/Debit Card
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Quantity")</td>
+            <td>@Html.DropDownList("Quantity", new SelectList(Enumerable.Range(1, 10)))</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Unit Price")</td>
+            <td>@Html.Editor("UnitPrice") 
+        </tr>
+        <tr>
+            <td>Delivery Options:</td>
+            <td>
+                @Html.CheckBox("Packaging") Packaging
+                @Html.CheckBox("Tracking") Tracking
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Location")</td>
+            <td>@Html.DropDownList("Location", new SelectList(new[] { "Amman East", "Amman West" }))</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Destination Address")</td>
+            <td>@Html.TextArea("DestinationAddress")    
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Send Order" />
+                <input type="reset" value="Clear" />
+            </td>
+        </tr>
+    </table>
+}
